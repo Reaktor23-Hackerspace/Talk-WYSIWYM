@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<style>
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500,500italic);
+
+section {
+  background: #333;
+  color: #fff;
+  padding: 1em 2em;
+  font-family: Roboto, Sans, Arial;
+}
+
+#follow {
+  background: none;
+}
+
+.grey {
+  color: #777;
+}
+
+a:link,
+a:visited {
+  color: #bff44b;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.titlepage {
+	text-align: center;
+	padding: 2em;
+	font-size: 1.8em;
+}
+
+.highlight {
+	color: #fbb44f;
+	color: #bff44b;
+}
+
+section table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+section table th {
+	text-align: left;
+	border-bottom: 2px white solid;
+}
+
+section table td {
+	vertical-align: top;
+	padding-top: 1em;
+}
+
+.tex sub, .latex sub, .latex sup {
+  text-transform: uppercase;
+}
+
+.tex sub, .latex sub {
+  vertical-align: -0.5ex;
+  margin-left: -0.1667em;
+  margin-right: -0.125em;
+}
+
+.tex, .latex, .tex sub, .latex sub {
+  font-size: 1em;
+}
+
+.latex sup {
+  font-size: 0.85em;
+  vertical-align: 0.15em;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+
+code {
+	font-size: 0.6em;
+	line-height: 1.0em;
+	display: block;
+	font-family: monospace;
+	white-space: pre;
+}
+
+code, .sample {
+	border: 2px #bff44b solid;
+	padding: 0.25em;
+	background-color: #444;
+}
+
+</style>
+
+<section class="titlepage">
+	<h1 class="highlight">WYSIWYM</h1>
+	Textverarbeitung ohne M$ Word
+</section>
+
+<section>
+	<h1>Begriffsklärung</h1>
+	<ul>
+		<li><b>WYSIWYG</b> - What You See Is What You <span class="highlight">Get</span></li>
+		<li><b>WYSIWYM</b> - What You See Is What You <span class="highlight">Mean</span></li>
+		<li><b>Markup</b> - dt. Auszeichnungssprache<br>
+			"... maschinenlesbare Sprache für die Gliederung und Formatierung von Texten und anderen Daten." <small>https://de.wikipedia.org/wiki/Auszeichnungssprache</small></li>
+	</ul>
+</section>
+
+<section>
+	<h1>Kontra Microsoft Word</h1>
+	<ul>
+		<li>Plattformabhängig</li>
+		<li>Leistungsintensiv</li>
+		<li>Maschinelle Weiterverarbeitung schwierig</li>
+		<li>Komplexe Dateiformate</li>
+		<li>Fehleranfällig</li>
+		<li>Fehlbedienungsanfällig (!)</li>
+		<li>$$$ / €€€</li>
+	</ul>
+</section>
+
+<section>
+	<h1>Kontra Open / Libre Office</h1>
+	<ul>
+		<li><strike>Plattformabhängig</strike></li>
+		<li>Leistungsintensiv</li>
+		<li>Maschinelle Weiterverarbeitung schwierig</li>
+		<li>Komplexe Dateiformate</li>
+		<li>Fehleranfällig</li>
+		<li>Fehlbedienungsanfällig (!)</li>
+		<li><strike>$$$ / €€€</strike></li>
+	</ul>
+</section>
+
+<section>
+	<h1>Überblick Alternativen</h1>
+	<table>
+		<tr>
+			<th width="33%">ASCII only</th>
+			<th width="33%">kompilierte</th>
+			<th width="33%">direkt dargestellte</th>
+		</tr>
+		<tr>
+			<td>
+				E-Mail<br>
+				Markdown<br>
+				RFC
+			</td>
+			<td>
+				reStructuredText<br>
+				Markdown<br>
+				WIKI-Syntax<br>
+				LaTeX
+			</td>
+			<td>
+				HTML<br>
+				Man-Pages<br>
+				PerlDoc
+			</td>
+		</tr>
+	</table>
+</section>
+
+<section>
+	<h1>Überblick Alternativen</h1>
+	<table>
+		<tr>
+			<th width="33%">ASCII only</th>
+			<th width="33%">kompilierte</th>
+			<th width="33%">direkt dargestellte</th>
+		</tr>
+		<tr>
+			<td>
+				E-Mail<br>
+				<span class="highlight">Markdown</span><br>
+				RFC
+			</td>
+			<td class="highlight">
+				reStructuredText<br>
+				Markdown<br>
+				WIKI-Syntax<br>
+				LaTeX
+			</td>
+			<td>
+				HTML<br>
+				Man-Pages<br>
+				PerlDoc
+			</td>
+		</tr>
+	</table>
+</section>
+
+<section class="titlepage">
+	<h1>Intermezzo</h1>
+	RFC, HTML, Man-Pages, PerlDoc
+</section>
+
+<section>
+	<h1>Beispiel</h1>
+	<div class="sample" style="font-size: 0.5em; line-height: 1.2em;">
+	<h1>Title</h1>
+
+	<h2>Heading 1</h2>
+
+	This is a <b>bold text</b>.
+
+	<ul>
+		<li>Some point</li>
+		<li>Some <i>italic</i> point</li>
+		<ul>
+			<li>More points</li>
+			<li>Even more points</li>
+		</ul>
+	</ul>
+
+	<h2>Heading 2</h2>
+
+	If you click this <a ref="https://www.google.de/search?q=baby+meme&tbm=isch">link</a>
+	you will see this image:<br>
+
+	<img src="http://memesvault.com/wp-content/uploads/Funny-Baby-Meme-4.jpg" width="20%">
+	</div>
+</section>
+
+<section>
+	<h1>HTML</h1>
+	<code>&lt;h1&gt;Title&lt;/h1&gt;
+
+&lt;h2&gt;Heading 1&lt;/h2&gt;
+
+This is a &lt;b&gt;bold text&lt;/b&gt;.
+
+&lt;ul&gt;
+  &lt;li&gt;Some point&lt;/li&gt;
+  &lt;li&gt;Some &lt;i&gt;italic&lt;/i&gt; point&lt;/li&gt;
+  &lt;ul&gt;
+    &lt;li&gt;More points&lt;/li&gt;
+    &lt;li&gt;Even more points&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+
+If you click this &lt;a ref="https://www.google.de/search?q=baby+meme&tbm=isch"&gt;link&lt;/a&gt;
+you will see this image:&lt;br&gt;
+
+&lt;img src="http://memesvault.com/wp-content/uploads/Funny-Baby-Meme-4.jpg"&gt;</code>
+</section>
+
+<section>
+	<h1>WIKI-Syntax - MediaWiki</h1>
+	<code>== Title ==
+
+=== Heading 1 ===
+
+This is a '''bold text'''.
+
+* Some point
+* Some ''italic'' point
+** More points 
+** Even more points
+
+=== Heading 2 ===
+
+If you click this [https://www.google.de/search?q=baby+meme&tbm=isch link]
+you will see this image:
+
+[[http://memesvault.com/wp-content/uploads/Funny-Baby-Meme-4.jpg]]</code>
+</section>
+
+<section>
+	<h1>WIKI-Syntax - DokuWiki</h1>
+	<code>====== Title ======
+
+===== Heading 1 =====
+
+This is a **bold text**.
+
+  * Some point
+  * Some //italic// point
+    * More points 
+    * Even more points
+
+===== Heading 2 =====
+
+If you click this [[https://www.google.de/search?q=baby+meme&tbm=isch|link]]
+you will see this image:
+
+{{http://memesvault.com/wp-content/uploads/Funny-Baby-Meme-4.jpg}}</code>
+</section>
+
+<section>
+	<h1>reStructuredText</h1>
+	<code>=====
+Title
+=====
+
+Heading 1
+---------
+
+This is a **bold text**.
+
+- Some point
+- Some *italic* point
+
+  - More points 
+  - Even more points
+
+Heading 2
+---------
+
+If you click this `link &lt;https://www.google.de/search?q=baby+meme&tbm=isch&gt;`_
+you will see this image:
+
+.. image:: http://memesvault.com/wp-content/uploads/Funny-Baby-Meme-4.jpg</code>
+</section>
+
+<section>
+	<h1>Markdown</h1>
+	<code>Title
+=====
+
+Heading 1
+---------
+This is a **bold text**.
+
+* Some point
+* Some *italic* point
+  * More points 
+  * Even more points
+
+Heading 2
+---------
+If you click this [link](https://www.google.de/search?q=baby+meme&tbm=isch)
+you will see this image:
+
+![image](http://memesvault.com/wp-content/uploads/Funny-Baby-Meme-4.jpg)</code>
+</section>
+
+<section>
+	<h1><span class="latex">L<sup>a</sup>T<sub>e</sub>X</span></h1>
+	<code style="font-size: 0.5em;">\documentclass{article}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{Title}
+\maketitle
+
+\section{Heading 1}
+This is a \textbf{bold text}.
+
+\begin{itemize}
+  \item Some point
+  \item Some \textit{italic} point
+  \begin{itemize}
+	\item More points
+	\item Even more points 
+  \end{itemize}
+\end{itemize}
+
+\section{Heading 2}
+If you click this \href{https://www.google.de/search?q=baby+meme&tbm=isch}{link}
+you will see this image:
+
+\includegraphics{http://memesvault.com/wp-content/uploads/Funny-Baby-Meme-4.jpg}
+\end{document}</code>
+
+</section>
+
+<section>
+	<h1>Markdown</h1>
+	... ist cool für ...
+	<ul>
+		<li>Web- / Blogartikel</li>
+		<li>READMEs</li>
+		<li>Kurze Dokus</li>
+		<li>Simple Präsentationen</li>
+	</ul>
+</section>
+
+<section>
+	<h1>reStructuredText</h1>
+	... ist cool für ...
+	<ul>
+		<li>Dokumentationen</li>
+		<li>Komplexere Websites</li>
+		<li>Kurze Dokus</li>
+	</ul>
+</section>
+
+<section>
+	<h1>LaTeX</h1>
+	... ist cool für ...
+	<ul>
+		<li>Druckmedien</li>
+		<li>Wissenschaftliche Arbeiten</li>
+		<li>Präsentationen</li>
+		<li>Briefe</li>
+	</ul>
+</section>
+
+<section style="padding-top: 5em; text-align: center;">
+	<span style="font-size: 4em;line-height: 1.5em;">praktische Beispiele</span>
+</section>
+
+
+
+
+<script src="stack/d3.v3.min.js"></script>
+<script src="stack/stack.v1.min.js"></script>
+<script>
+
+var mystack = stack()
+    .on("activate", activate)
+    .on("deactivate", deactivate);
+
+var section = d3.selectAll("section"),
+    follow = d3.select("#follow"),
+    followAnchor = d3.select("#follow-anchor"),
+    lorenz = d3.select("#lorenz"),
+    followIndex = section[0].indexOf(follow.node()),
+    lorenzIndex = section[0].indexOf(lorenz.node());
+
+function refollow() {
+  followAnchor.style("top", (followIndex + (1 - mystack.scrollRatio()) / 2 - d3.event.offset) * 100 + "%");
+}
+
+function activate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", refollow);
+  if (i === lorenzIndex) startLorenz();
+}
+
+function deactivate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", null);
+  if (i === lorenzIndex) stopLorenz();
+}
+
+var lorenzInterval;
+
+function startLorenz() {
+  var δτ = 0.003,
+      ρ = 28,
+      σ = 10,
+      β = 8 / 3,
+      x = .5,
+      y = .5,
+      z = 10,
+      n = 30;
+
+  var width = 1280,
+      height = 720;
+
+  var canvas = d3.select("canvas")
+      .style("position", "absolute")
+      .style("top", 0)
+      .style("left", 0)
+      .style("width", "100%")
+      .style("height", "100%")
+      .attr("width", width)
+      .attr("height", height);
+
+  var color = d3.scale.linear()
+      .domain([0, 20, 30, 50])
+      .range(["yellow", "orange", "brown", "purple"])
+      .interpolate(d3.interpolateHcl);
+
+  var context = canvas.node().getContext("2d");
+
+  context.lineWidth = .2;
+  context.fillStyle = "rgba(0,0,0,.03)";
+
+  d3.timer(function() {
+    context.save();
+    context.globalCompositeOperation = "lighter";
+    context.translate(width / 2, height / 2);
+    context.scale(12, 14);
+    context.rotate(30);
+    for (var i = 0; i < n; ++i) {
+      context.strokeStyle = color(z);
+      context.beginPath();
+      context.moveTo(x, y);
+      x += δτ * σ * (y - x);
+      y += δτ * (x * (ρ - z) - y);
+      z += δτ * (x * y - β * z);
+      context.lineTo(x, y);
+      context.stroke();
+    }
+    context.restore();
+    return !lorenzInterval;
+  });
+
+  lorenzInterval = setInterval(function() {
+    context.fillRect(0, 0, width, height);
+  }, 100);
+}
+
+function stopLorenz() {
+  lorenzInterval = clearInterval(lorenzInterval);
+}
+
+</script>
